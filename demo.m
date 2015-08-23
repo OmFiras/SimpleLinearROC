@@ -14,9 +14,13 @@ load fisheriris
 % creating [0, 1] labels for classifying virginica or not virginica
 labels = strcmp(species, 'virginica');
 
+% Initialise the classifier class with the features and labels
 S2=SimpleClassifier(meas, labels, 'virginica');
+% Run leave one out cross validation
 S2=S2.clas_LOOCV('linear'); 
+% Display the confusion matrix of the LOOCV
 S2.disp_conf();
+% Generate a ROC curve
 S2=S2.roc_curve_perf_pos();
 
 % Classification 2
